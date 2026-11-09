@@ -17,3 +17,12 @@
 4. **Expected benefit:** Better region-level semantic recognition and potentially improved detection of unfamiliar object classes; improved overall mAP is possible but not guaranteed.
 5. **Limitations:** The method is designed around pretrained vision-language models and conventional images. Sonar-specific visual-language alignment, reliable pseudo-labels, and domain adaptation would be essential; noisy pseudo-labels could also reinforce detection errors.
 6. **Verdict:** Worth exploring as an auxiliary open-vocabulary adaptation module for a YOLO-style UATD detector, especially for unseen classes. Compare mAP, recall, and novel-class AP against the baseline and check pseudo-label quality.
+
+## Sonar-FERT: An Accurate Detector Based on RT-DETR for Underwater Sonar Imagery
+
+1. **Sonar-FERT** proposes an RT-DETR-based detector with a Dual Decoupled Enhancement (DDE) strategy to improve feature robustness and object localization in forward-looking sonar images.
+2. It introduces **Frequency-Modulated Deformable Large Kernel Attention (FMD-LKA)** in the encoder to suppress speckle noise and extract robust features, and **Edge-Guided Attention (EGA)** in the decoder to improve boundary representation and localization.
+3. **UATD applicability:** Very high. The authors explicitly evaluate the method on the **UATD-2022 dataset**, so its pipeline is directly relevant rather than requiring an RGB-to-sonar adaptation.
+4. **Reported benefit:** On UATD-2022, Sonar-FERT achieves F1-scores of **87.3% and 87.6%**, with mAP values of **83.6% and 84.7%** on the reported test settings. It also reports 89.3% mAP on the Water Tank Marine Debris dataset.
+5. **Limitations:** It is based on RT-DETR, so computational cost and inference speed should be checked against your current YOLO baseline. Its reported scores may also depend on the exact UATD split and evaluation protocol.
+6. **Verdict:** **Highly recommended to test.** You can reproduce Sonar-FERT on UATD-2022 or selectively integrate FMD-LKA and EGA into your existing detector. It has strong potential to improve detection accuracy, but compare mAP@50, mAP@50:95, precision, recall, F1, and FPS under identical settings.
