@@ -17,3 +17,12 @@
 4. **Expected benefit:** It may improve semantic recognition and generalization to unseen classes, but it does not directly improve bounding-box localization or guarantee higher detection accuracy.
 5. **Limitations:** The paper uses RGB image benchmarks, whereas UATD contains sonar imagery; visual-semantic alignment, graph quality, and domain shift would need careful adaptation and testing.
 6. **Verdict:** Worth exploring as an auxiliary zero-shot classification branch on top of a YOLO-style detector—not as a replacement for the detector. Compare mAP, recall, and unseen-class accuracy against the baseline to verify any improvement.
+
+## The Detector Teaches Itself: Lightweight Self-supervised Adaptation for Open-Vocabulary Object Detection
+
+1. **The Detector Teaches Itself** proposes Decoupled Adaptivity Training (DAT), a self-supervised fine-tuning pipeline that helps a vision-language model (VLM) recognize objects at the region level for open-vocabulary object detection.
+2. It uses a pretrained closed-set detector to generate region-aware pseudo-labels, including regions containing novel objects that may otherwise be unlabeled or mislabeled, and uses these data to adapt the VLM.
+3. **UATD applicability:** The pipeline could be adapted to sonar imagery to help recognize underwater object categories beyond the detector's original training classes.
+4. **Expected benefit:** Better region-level semantic recognition and potentially improved detection of unfamiliar object classes; improved overall mAP is possible but not guaranteed.
+5. **Limitations:** The method is designed around pretrained vision-language models and conventional images. Sonar-specific visual-language alignment, reliable pseudo-labels, and domain adaptation would be essential; noisy pseudo-labels could also reinforce detection errors.
+6. **Verdict:** Worth exploring as an auxiliary open-vocabulary adaptation module for a YOLO-style UATD detector, especially for unseen classes. Compare mAP, recall, and novel-class AP against the baseline and check pseudo-label quality.
