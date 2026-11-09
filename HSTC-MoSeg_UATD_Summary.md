@@ -1,4 +1,4 @@
-# HSTC-MoSeg: UATD Applicability Summary
+# HSTC-MoSeg: A Hierarchical Spatially Adaptive and Temporally Consistent Network for Radar Point Cloud Moving Object Segmentation — UATD Applicability Summary
 
 1. **HSTC-MoSeg** introduces three modules: HCAB (local and global contextual attention), SAPConv (geometry-guided spatially adaptive convolution), and TCEM (temporal consistency enhancement) for radar point-cloud segmentation.
 2. **HCAB** could be adapted to UATD to improve local and global acoustic feature extraction.
